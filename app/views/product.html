@@ -1,0 +1,78 @@
+<div class="container" ng-if="!loading">
+  <div class="flex-row flex-center mt10">
+    <input type="text" ng-model="search.searchString" class="text-box mr10">
+    <button ng-click="filter()" class="search button mr10">Search</button>
+    <button ng-click="clear()" class="reset button mr10">Clear</button>
+    <p class="error-text" ng-show="errorMessage">{{errorMessage}}</p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+  </table>
+  <table class="table" ng-if="products.length">
+    <tbody>
+      <tr ng-repeat="product in products">
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p ng-if="!products.length">No products found for search query.</p>
+</div>
+<div class="container" ng-if="loading">
+  <p>Loading....</p>
+</div>
+<style>
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .flex-center {
+    justify-content: center
+  }
+
+  .flex-center-vertical {
+    align-items: center
+  }
+
+  .mt10 {
+    margin-top: 10px;
+  }
+
+  .mr10 {
+    margin-right: 10px;
+  }
+
+  .text-box {
+    width: 300px;
+    background: #fff;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 15px;
+    height: 30px;
+  }
+
+  .button {
+    height: 30px;
+  }
+
+  .error-message {
+    border: 1px solid red;
+    height: 30px;
+  }
+
+  .error-text {
+    color: #cc0033;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 30px;
+    text-shadow: 1px 1px rgba(250, 250, 250, .3);
+  }
+</style>
